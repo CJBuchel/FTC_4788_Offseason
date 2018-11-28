@@ -1,0 +1,6 @@
+include ':FtcRobotController', ':openCVLibrary3', ':DogeCV'//, ':openCVLibrary3a', ':DogeCVa'
+include ':TeamCode'
+include ':openCVLibrary3'
+include ':DogeCV'
+//project(':openCVLibrary3')//.projectDir = new File('DogeCV-master/openCVLibrary3')
+//project(':DogeCV')//.projectDir = new File('DogeCV-master/DogeCV')
