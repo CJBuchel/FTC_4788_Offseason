@@ -242,32 +242,34 @@ public class Drive_4788 extends LinearOpMode {
         //====================================
         //Gold Vision Tracking Start
         //====================================
-        double visionLeftPower = -0.3;
-        double visionRightPower = -0.3;
-        double visionRightPowerStraight = -0.6;
-        double visionLeftPowerStraight = -0.6;
+        double visionLeftPower = 0.2;
+        double visionRightPower = 0.2;
+        double visionRightPowerStraight = 0.6;
+        double visionLeftPowerStraight = 0.6;
         while(gamepad1.a){
 
             if (targetVisible = true) {
-                leftDrive.setPower(visionLeftPower);
-                rightDrive.setPower(visionRightPower);
+                leftDrive.setPower(-visionLeftPowerStraight);
+                rightDrive.setPower(-visionRightPowerStraight);
 
             }
             if (detector.getXPosition() < 350) {
-                leftDrive.setPower(visionLeftPower);
-                rightDrive.setPower(visionRightPower);
+                leftDrive.setPower(-visionLeftPowerStraight);
+                rightDrive.setPower(-visionRightPowerStraight);
             }
             if (detector.getXPosition() > 230) {
-                leftDrive.setPower(visionLeftPower);
-                rightDrive.setPower(visionRightPower);
+                leftDrive.setPower(-visionLeftPowerStraight);
+                rightDrive.setPower(-visionRightPowerStraight);
             }
             if(detector.getXPosition() > 350){
-                leftDrive.setPower(visionLeftPower);
+                leftDrive.setPower(-visionLeftPower);
+                rightDrive.setPower(visionRightPower);
             }
             
             
             if(detector.getXPosition() < 230){
-                rightDrive.setPower(visionRightPower);
+                leftDrive.setPower(visionLeftPower);
+                rightDrive.setPower(-visionRightPower);
             }
 
             /*else{
@@ -301,10 +303,10 @@ public class Drive_4788 extends LinearOpMode {
             // POV Mode uses left stick to go forward, and right stick to turn.
             // - This uses basic math to combine motions and is easier to drive straight..3.\10
             double drive = -gamepad1.left_stick_y;
-            double turn  = -gamepad1.left_stick_x;
+            double turn  = gamepad1.right_stick_x;
 
             leftPower    = Range.clip(drive + turn, 0.2, 1.0) ;
-            rightPower    = Range.clip(drive + turn, 0.2, 1.0) ;
+            rightPower   = Range.clip(drive + turn, 0.2, 1.0) ;
 
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
@@ -315,8 +317,8 @@ public class Drive_4788 extends LinearOpMode {
             //rightPower = gamepad1.right_stick_y ;
 
             // Send calculated power to wheels
-            leftDrive.setPower(leftPower);
-            rightDrive.setPower(rightPower);
+            leftDrive.setPower(-leftPower);
+            rightDrive.setPower(-rightPower);
 
 
 
