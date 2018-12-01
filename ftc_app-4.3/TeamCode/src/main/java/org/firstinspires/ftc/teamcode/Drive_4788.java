@@ -248,6 +248,8 @@ public class Drive_4788 extends LinearOpMode {
         //====================================
         double goal = 290;
         double kP = 0.01;
+        double output;
+        double error;
         double visionRightPowerStraight = 1.0;
         double visionLeftPowerStraight = 1.0;
        
@@ -261,8 +263,8 @@ public class Drive_4788 extends LinearOpMode {
 
             }
 
-            if (detector.getXPotition() > 290) { // If object is on the right 
-                error = goal - getXPosition();
+            if (detector.getXPosition() > 290) { // If object is on the right 
+                error = goal - detector.getXPosition();
 
                 output = kP * error;
     
@@ -270,8 +272,8 @@ public class Drive_4788 extends LinearOpMode {
                 rightDrive.setPower(-output);
             }
 
-            if (detector.getXPotition() < 290) { // If object is on the left
-                error = goal - getXPosition();
+            if (detector.getXPosition() < 290) { // If object is on the left
+                error = goal - detector.getXPosition();
 
                 output = kP * error;
     
