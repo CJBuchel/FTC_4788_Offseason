@@ -2,6 +2,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -52,10 +53,10 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 
 
-@TeleOp(name="Drive_4788", group="Linear Opmode")
+@Autonomous(name="Auto_4788")
 
 //@Disabled
-public class Drive_4788 extends LinearOpMode {
+public class Auto_4788 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -177,10 +178,8 @@ public class Drive_4788 extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        /*
         hexDrive1 = hardwareMap.get(DcMotor.class, "hex_motor1");
         hexDrive2 = hardwareMap.get(DcMotor.class, "hex_motor2");
-        */
 
         
 
@@ -189,13 +188,11 @@ public class Drive_4788 extends LinearOpMode {
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
-        /*
         hexDrive1.setDirection(DcMotor.Direction.FORWARD);
         hexDrive1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         hexDrive2.setDirection(DcMotor.Direction.FORWARD);
         hexDrive2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        */
 
         
 
@@ -252,7 +249,7 @@ public class Drive_4788 extends LinearOpMode {
         double visionLeftPowerFar = 0.4;
         double visionRightPowerStraight = 0.6;
         double visionLeftPowerStraight = 0.6;
-        while(gamepad1.a){
+        //while(gamepad1.a){
 
             if (targetVisible = true) {
                 leftDrive.setPower(-visionLeftPowerStraight);
@@ -269,6 +266,18 @@ public class Drive_4788 extends LinearOpMode {
             }
 
 
+
+            //close
+            if(detector.getXPosition() > 350){
+                leftDrive.setPower(-visionLeftPowerClose);   //230 350
+                rightDrive.setPower(visionRightPowerClose);
+            }
+            
+            
+            if(detector.getXPosition() < 230){
+                leftDrive.setPower(visionLeftPowerClose);
+                rightDrive.setPower(-visionRightPowerClose);
+            }
             //Far
             if(detector.getXPosition() > 480){
                 leftDrive.setPower(-visionLeftPowerFar);
@@ -280,17 +289,6 @@ public class Drive_4788 extends LinearOpMode {
                 leftDrive.setPower(visionLeftPowerFar);
                 rightDrive.setPower(-visionRightPowerFar);
             }
-            //close
-            if(detector.getXPosition() > 350){
-                leftDrive.setPower(-visionLeftPowerClose);   //230 350 = center
-                rightDrive.setPower(visionRightPowerClose);
-            }
-            
-            
-            if(detector.getXPosition() < 230){
-                leftDrive.setPower(visionLeftPowerClose);
-                rightDrive.setPower(-visionRightPowerClose);
-            }
 
 
 
@@ -299,15 +297,15 @@ public class Drive_4788 extends LinearOpMode {
                 rightDrive.setPower(-visionRightPower);
             }*/
             //====================================
-            //Gold Vision Tracking Start
+            //Gold Vision Tracking End
             //====================================
             
             
 
-        }
+        //}
 
 
-
+            /*
 
             // --------------------------------------------------------------------------------------------------------
             // Drive Motor Section
@@ -337,10 +335,10 @@ public class Drive_4788 extends LinearOpMode {
             // - This requires no math, but it is hard to drive forward slowly and keep straight.
             //leftPower  = gamepad1.left_stick_y ;
             //rightPower = gamepad1.right_stick_y ;
-
+            */
             // Send calculated power to wheels
-            leftDrive.setPower(-leftPower);
-            rightDrive.setPower(-rightPower);
+            //leftDrive.setPower(-leftPower);
+            //rightDrive.setPower(-rightPower);
 
 
 
@@ -370,7 +368,7 @@ public class Drive_4788 extends LinearOpMode {
             // ---------------------------------------------------------------------------------
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
+            //telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
         }
     }
