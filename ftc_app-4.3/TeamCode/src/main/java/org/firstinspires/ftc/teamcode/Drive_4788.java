@@ -246,13 +246,52 @@ public class Drive_4788 extends LinearOpMode {
         //====================================
         //Gold Vision Tracking Start
         //====================================
-        double visionLeftPowerClose = 0.2;
-        double visionRightPowerClose = 0.2;
-        double visionRightPowerFar = 0.4;
-        double visionLeftPowerFar = 0.4;
-        double visionRightPowerStraight = 0.6;
-        double visionLeftPowerStraight = 0.6;
+        double goal = 290;
+        double kP = 0.01;
+        double visionRightPowerStraight = 1.0;
+        double visionLeftPowerStraight = 1.0;
+       
         while(gamepad1.a){
+
+
+
+            if (targetVisible = true) { // If object is directly in front of it
+                leftDrive.setPower(-visionLeftPowerStraight);
+                rightDrive.setPower(-visionRightPowerStraight);
+
+            }
+
+            if (detector.getXPotition() > 290) { // If object is on the right 
+                error = goal - getXPosition();
+
+                output = kP * error;
+    
+                leftDrive.setPower(output);
+                rightDrive.setPower(-output);
+            }
+
+            if (detector.getXPotition() < 290) { // If object is on the left
+                error = goal - getXPosition();
+
+                output = kP * error;
+    
+                leftDrive.setPower(-output);
+                rightDrive.setPower(output);
+                
+            }
+           
+
+
+
+
+
+        //double visionLeftPowerClose = 0.2;
+        //double visionRightPowerClose = 0.2;
+        //double visionRightPowerFar = 0.4;
+        //double visionLeftPowerFar = 0.4;
+        //double visionRightPowerStraight = 0.6;
+        //double visionLeftPowerStraight = 0.6;
+            /*
 
             if (targetVisible = true) {
                 leftDrive.setPower(-visionLeftPowerStraight);
@@ -291,6 +330,7 @@ public class Drive_4788 extends LinearOpMode {
                 leftDrive.setPower(visionLeftPowerClose);
                 rightDrive.setPower(-visionRightPowerClose);
             }
+            */
 
 
 
