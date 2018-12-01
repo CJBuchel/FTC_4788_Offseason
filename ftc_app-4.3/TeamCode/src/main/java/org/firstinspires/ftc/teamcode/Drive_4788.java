@@ -65,8 +65,8 @@ public class Drive_4788 extends LinearOpMode {
     
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    private DcMotor hexDrive1 = null;
-    private DcMotor hexDrive2 = null;
+    //private DcMotor hexDrive1 = null;
+    //private DcMotor hexDrive2 = null;
 
     // Select which camera you want use.  The FRONT camera is the one on the same side as the screen.
     // Valid choices are:  BACK or FRONT

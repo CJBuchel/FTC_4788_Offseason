@@ -66,8 +66,8 @@ public class Auto_4788 extends LinearOpMode {
     
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    private DcMotor hexDrive1 = null;
-    private DcMotor hexDrive2 = null;
+    //private DcMotor hexDrive1 = null;
+    //private DcMotor hexDrive2 = null;
 
     // Select which camera you want use.  The FRONT camera is the one on the same side as the screen.
     // Valid choices are:  BACK or FRONT
@@ -178,8 +178,8 @@ public class Auto_4788 extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        hexDrive1 = hardwareMap.get(DcMotor.class, "hex_motor1");
-        hexDrive2 = hardwareMap.get(DcMotor.class, "hex_motor2");
+        //hexDrive1 = hardwareMap.get(DcMotor.class, "hex_motor1");
+        //hexDrive2 = hardwareMap.get(DcMotor.class, "hex_motor2");
 
         
 
