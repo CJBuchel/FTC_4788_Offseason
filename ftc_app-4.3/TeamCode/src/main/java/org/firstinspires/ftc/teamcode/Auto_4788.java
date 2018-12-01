@@ -66,8 +66,8 @@ public class Auto_4788 extends LinearOpMode {
     
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    //private DcMotor hexDrive1 = null;
-    //private DcMotor hexDrive2 = null;
+    private DcMotor hexDrive1 = null;
+    private DcMotor hexDrive2 = null;
 
     // Select which camera you want use.  The FRONT camera is the one on the same side as the screen.
     // Valid choices are:  BACK or FRONT
@@ -188,11 +188,11 @@ public class Auto_4788 extends LinearOpMode {
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
-        hexDrive1.setDirection(DcMotor.Direction.FORWARD);
-        hexDrive1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //hexDrive1.setDirection(DcMotor.Direction.FORWARD);
+        //hexDrive1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        hexDrive2.setDirection(DcMotor.Direction.FORWARD);
-        hexDrive2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //hexDrive2.setDirection(DcMotor.Direction.FORWARD);
+        //hexDrive2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         
 
