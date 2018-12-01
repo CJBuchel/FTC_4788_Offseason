@@ -269,7 +269,6 @@ public class Drive_4788 extends LinearOpMode {
                 output = kP * error;
     
                 leftDrive.setPower(output);
-                rightDrive.setPower(-output);
             }
 
             if (detector.getXPosition() < 290) { // If object is on the left
@@ -278,7 +277,6 @@ public class Drive_4788 extends LinearOpMode {
                 output = kP * error;
     
                 leftDrive.setPower(-output);
-                rightDrive.setPower(output);
                 
             }
            

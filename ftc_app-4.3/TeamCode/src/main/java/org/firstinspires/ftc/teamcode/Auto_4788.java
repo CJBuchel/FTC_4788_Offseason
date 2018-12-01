@@ -243,13 +243,52 @@ public class Auto_4788 extends LinearOpMode {
         //====================================
         //Gold Vision Tracking Start
         //====================================
-        double visionLeftPowerClose = 0.2;
-        double visionRightPowerClose = 0.2;
-        double visionRightPowerFar = 0.4;
-        double visionLeftPowerFar = 0.4;
-        double visionRightPowerStraight = 0.6;
-        double visionLeftPowerStraight = 0.6;
-        //while(gamepad1.a){
+        double goal = 290;
+        double kP = 0.01;
+        double output;
+        double error;
+        double visionRightPowerStraight = 1.0;
+        double visionLeftPowerStraight = 1.0;
+       
+        while(gamepad1.a){
+
+
+
+            if (targetVisible = true) { // If object is directly in front of it
+                leftDrive.setPower(-visionLeftPowerStraight);
+                rightDrive.setPower(-visionRightPowerStraight);
+
+            }
+
+            if (detector.getXPosition() > 290) { // If object is on the right 
+                error = goal - detector.getXPosition();
+
+                output = kP * error;
+    
+                leftDrive.setPower(output);
+            }
+
+            if (detector.getXPosition() < 290) { // If object is on the left
+                error = goal - detector.getXPosition();
+
+                output = kP * error;
+    
+                leftDrive.setPower(-output);
+                
+            }
+           
+
+
+
+
+
+        //double visionLeftPowerClose = 0.2;
+        //double visionRightPowerClose = 0.2;
+        //double visionRightPowerFar = 0.4;
+        //double visionLeftPowerFar = 0.4;
+        //double visionRightPowerStraight = 0.6;
+        //double visionLeftPowerStraight = 0.6;
+            /*
 
             if (targetVisible = true) {
                 leftDrive.setPower(-visionLeftPowerStraight);
@@ -266,18 +305,6 @@ public class Auto_4788 extends LinearOpMode {
             }
 
 
-
-            //close
-            if(detector.getXPosition() > 350){
-                leftDrive.setPower(-visionLeftPowerClose);   //230 350
-                rightDrive.setPower(visionRightPowerClose);
-            }
-            
-            
-            if(detector.getXPosition() < 230){
-                leftDrive.setPower(visionLeftPowerClose);
-                rightDrive.setPower(-visionRightPowerClose);
-            }
             //Far
             if(detector.getXPosition() > 480){
                 leftDrive.setPower(-visionLeftPowerFar);
@@ -289,6 +316,18 @@ public class Auto_4788 extends LinearOpMode {
                 leftDrive.setPower(visionLeftPowerFar);
                 rightDrive.setPower(-visionRightPowerFar);
             }
+            //close
+            if(detector.getXPosition() > 350){
+                leftDrive.setPower(-visionLeftPowerClose);   //230 350 = center
+                rightDrive.setPower(visionRightPowerClose);
+            }
+            
+            
+            if(detector.getXPosition() < 230){
+                leftDrive.setPower(visionLeftPowerClose);
+                rightDrive.setPower(-visionRightPowerClose);
+            }
+            */
 
 
 
@@ -297,12 +336,14 @@ public class Auto_4788 extends LinearOpMode {
                 rightDrive.setPower(-visionRightPower);
             }*/
             //====================================
-            //Gold Vision Tracking End
+            //Gold Vision Tracking Start
             //====================================
             
             
 
-        //}
+        }
+
+
 
 
             /*
